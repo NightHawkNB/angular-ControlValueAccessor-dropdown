@@ -1,0 +1,28 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" type="text" formControlName="name">
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" type="email" formControlName="email">
+    </div>
+
+    <div>
+      <label>Category:</label>
+      <app-custom-dropdown
+        formControlName="category"
+        [options]="categories">
+      </app-custom-dropdown>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div *ngIf="submitted">
+    <h3>Submitted Data:</h3>
+    <pre>{{ formData | json }}</pre>
+  </div>
+</div>
